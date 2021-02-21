@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- 引入 ECharts 文件 -->
+    <script src="echarts.min.js"></script>
+	<script src = "world.js"></script>
+</head>
+
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 1280px;height:720px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+		var name_title = "新型冠状病毒疫情世界地图"
+        var mapName = 'world'
+		var data = [
+//		{name: 'China', value: [{ name: '感染人数' , value:1542076},{ name: '治愈人数' , value:1317612},{ name: '死亡人数' , value:59184}]}
+		{ name: '伊朗', value: [{ name: '感染人数' , value:1542076},{ name: '治愈人数' , value:1317612},{ name: '死亡人数' , value:59184}]},{ name: '印度尼西亚', value: [{ name: '感染人数' , value:1243646},{ name: '治愈人数' , value:1047676},{ name: '死亡人数' , value:33788}]},{ name: '印度', value: [{ name: '感染人数' , value:10937320},{ name: '治愈人数' , value:10644858},{ name: '死亡人数' , value:155913}]},{ name: '哈萨克斯坦', value: [{ name: '感染人数' , value:251959},{ name: '治愈人数' , value:121347},{ name: '死亡人数' , value:3246}]},{ name: '黎巴嫩', value: [{ name: '感染人数' , value:343601},{ name: '治愈人数' , value:248720},{ name: '死亡人数' , value:4092}]},{ name: '土耳其', value: [{ name: '感染人数' , value:2609359},{ name: '治愈人数' , value:2496833},{ name: '死亡人数' , value:27738}]},{ name: '以色列', value: [{ name: '感染人数' , value:738629},{ name: '治愈人数' , value:681249},{ name: '死亡人数' , value:5473}]},{ name: '孟加拉国', value: [{ name: '感染人数' , value:541877},{ name: '治愈人数' , value:489254},{ name: '死亡人数' , value:8314}]},{ name: '马来西亚', value: [{ name: '感染人数' , value:272163},{ name: '治愈人数' , value:229762},{ name: '死亡人数' , value:1005}]},{ name: '巴勒斯坦', value: [{ name: '感染人数' , value:65802},{ name: '治愈人数' , value:32944},{ name: '死亡人数' , value:561}]},{ name: '塞浦路斯', value: [{ name: '感染人数' , value:32707},{ name: '治愈人数' , value:2057},{ name: '死亡人数' , value:225}]},{ name: '菲律宾', value: [{ name: '感染人数' , value:553424},{ name: '治愈人数' , value:512033},{ name: '死亡人数' , value:11577}]},{ name: '伊拉克', value: [{ name: '感染人数' , value:653557},{ name: '治愈人数' , value:611036},{ name: '死亡人数' , value:13204}]},{ name: '巴基斯坦', value: [{ name: '感染人数' , value:565989},{ name: '治愈人数' , value:528545},{ name: '死亡人数' , value:12436}]},{ name: '日本', value: [{ name: '感染人数' , value:419015},{ name: '治愈人数' , value:391208},{ name: '死亡人数' , value:7102}]},{ name: '约旦', value: [{ name: '感染人数' , value:352219},{ name: '治愈人数' , value:329511},{ name: '死亡人数' , value:4491}]},{ name: '阿联酋', value: [{ name: '感染人数' , value:358583},{ name: '治愈人数' , value:343935},{ name: '死亡人数' , value:1055}]},{ name: '科威特', value: [{ name: '感染人数' , value:180505},{ name: '治愈人数' , value:168420},{ name: '死亡人数' , value:1019}]},{ name: '卡塔尔', value: [{ name: '感染人数' , value:158591},{ name: '治愈人数' , value:148766},{ name: '死亡人数' , value:256}]},{ name: '韩国', value: [{ name: '感染人数' , value:85567},{ name: '治愈人数' , value:75896},{ name: '死亡人数' , value:1544}]},{ name: '缅甸', value: [{ name: '感染人数' , value:141690},{ name: '治愈人数' , value:130944},{ name: '死亡人数' , value:3192}]},{ name: '巴林', value: [{ name: '感染人数' , value:114361},{ name: '治愈人数' , value:106412},{ name: '死亡人数' , value:410}]},{ name: '阿曼', value: [{ name: '感染人数' , value:137929},{ name: '治愈人数' , value:129543},{ name: '死亡人数' , value:1544}]},{ name: '斯里兰卡', value: [{ name: '感染人数' , value:77184},{ name: '治愈人数' , value:70429},{ name: '死亡人数' , value:409}]},{ name: '叙利亚', value: [{ name: '感染人数' , value:14951},{ name: '治愈人数' , value:8520},{ name: '死亡人数' , value:984}]},{ name: '亚美尼亚', value: [{ name: '感染人数' , value:169597},{ name: '治愈人数' , value:161105},{ name: '死亡人数' , value:3155}]},{ name: '阿富汗', value: [{ name: '感染人数' , value:55540},{ name: '治愈人数' , value:48433},{ name: '死亡人数' , value:2428}]},{ name: '格鲁吉亚', value: [{ name: '感染人数' , value:266948},{ name: '治愈人数' , value:259228},{ name: '死亡人数' , value:3390}]},{ name: '沙特阿拉伯', value: [{ name: '感染人数' , value:373702},{ name: '治愈人数' , value:364646},{ name: '死亡人数' , value:6445}]},{ name: '马尔代夫', value: [{ name: '感染人数' , value:18082},{ name: '治愈人数' , value:15633},{ name: '死亡人数' , value:58}]},{ name: '阿塞拜疆', value: [{ name: '感染人数' , value:232337},{ name: '治愈人数' , value:226951},{ name: '死亡人数' , value:3185}]},{ name: '吉尔吉斯斯坦', value: [{ name: '感染人数' , value:85619},{ name: '治愈人数' , value:82452},{ name: '死亡人数' , value:1446}]},{ name: '尼泊尔', value: [{ name: '感染人数' , value:273070},{ name: '治愈人数' , value:269394},{ name: '死亡人数' , value:2055}]},{ name: '也门共和国', value: [{ name: '感染人数' , value:2152},{ name: '治愈人数' , value:350},{ name: '死亡人数' , value:619}]},{ name: '泰国', value: [{ name: '感染人数' , value:24961},{ name: '治愈人数' , value:23698},{ name: '死亡人数' , value:82}]},{ name: '中国', value: [{ name: '感染人数' , value:101604},{ name: '治愈人数' , value:95845},{ name: '死亡人数' , value:4842}]},{ name: '乌兹别克斯坦', value: [{ name: '感染人数' , value:79497},{ name: '治愈人数' , value:77993},{ name: '死亡人数' , value:622}]},{ name: '越南', value: [{ name: '感染人数' , value:2329},{ name: '治愈人数' , value:1580},{ name: '死亡人数' , value:35}]},{ name: '蒙古', value: [{ name: '感染人数' , value:2448},{ name: '治愈人数' , value:1777},{ name: '死亡人数' , value:5}]},{ name: '塔吉克斯坦', value: [{ name: '感染人数' , value:13714},{ name: '治愈人数' , value:13218},{ name: '死亡人数' , value:91}]},{ name: '新加坡', value: [{ name: '感染人数' , value:59810},{ name: '治愈人数' , value:59641},{ name: '死亡人数' , value:29}]},{ name: '东帝汶', value: [{ name: '感染人数' , value:102},{ name: '治愈人数' , value:62},{ name: '死亡人数' , value:0}]},{ name: '柬埔寨', value: [{ name: '感染人数' , value:479},{ name: '治愈人数' , value:469},{ name: '死亡人数' , value:0}]},{ name: '不丹', value: [{ name: '感染人数' , value:866},{ name: '治愈人数' , value:856},{ name: '死亡人数' , value:1}]},{ name: '文莱', value: [{ name: '感染人数' , value:184},{ name: '治愈人数' , value:177},{ name: '死亡人数' , value:3}]},{ name: '老挝', value: [{ name: '感染人数' , value:45},{ name: '治愈人数' , value:41},{ name: '死亡人数' , value:0}]},{ name: '英国', value: [{ name: '感染人数' , value:4071185},{ name: '治愈人数' , value:539},{ name: '死亡人数' , value:118933}]},{ name: '法国', value: [{ name: '感染人数' , value:3514147},{ name: '治愈人数' , value:223174},{ name: '死亡人数' , value:83122}]},{ name: '西班牙', value: [{ name: '感染人数' , value:3107172},{ name: '治愈人数' , value:150376},{ name: '死亡人数' , value:66316}]},{ name: '荷兰', value: [{ name: '感染人数' , value:1038156},{ name: '治愈人数' , value:11886},{ name: '死亡人数' , value:15017}]},{ name: '比利时', value: [{ name: '感染人数' , value:741205},{ name: '治愈人数' , value:19239},{ name: '死亡人数' , value:21750}]},{ name: '瑞典', value: [{ name: '感染人数' , value:622102},{ name: '治愈人数' , value:4971},{ name: '死亡人数' , value:12569}]},{ name: '塞尔维亚', value: [{ name: '感染人数' , value:490582},{ name: '治愈人数' , value:55559},{ name: '死亡人数' , value:5821}]},{ name: '意大利', value: [{ name: '感染人数' , value:2751657},{ name: '治愈人数' , value:2268253},{ name: '死亡人数' , value:94540}]},{ name: '俄罗斯', value: [{ name: '感染人数' , value:4112151},{ name: '治愈人数' , value:3642582},{ name: '死亡人数' , value:81446}]},{ name: '瑞士', value: [{ name: '感染人数' , value:545535},{ name: '治愈人数' , value:317600},{ name: '死亡人数' , value:9128}]},{ name: '波兰', value: [{ name: '感染人数' , value:1605372},{ name: '治愈人数' , value:1354598},{ name: '死亡人数' , value:41308}]},{ name: '爱尔兰', value: [{ name: '感染人数' , value:211751},{ name: '治愈人数' , value:25422},{ name: '死亡人数' , value:4036}]},{ name: '斯洛文尼亚', value: [{ name: '感染人数' , value:180507},{ name: '治愈人数' , value:2027},{ name: '死亡人数' , value:3981}]},{ name: '希腊', value: [{ name: '感染人数' , value:173905},{ name: '治愈人数' , value:1473},{ name: '死亡人数' , value:6181}]},{ name: '德国', value: [{ name: '感染人数' , value:2362352},{ name: '治愈人数' , value:2153918},{ name: '死亡人数' , value:67074}]},{ name: '乌克兰', value: [{ name: '感染人数' , value:1280904},{ name: '治愈人数' , value:1128895},{ name: '死亡人数' , value:24689}]},{ name: '捷克', value: [{ name: '感染人数' , value:1112654},{ name: '治愈人数' , value:987515},{ name: '死亡人数' , value:18596}]},{ name: '葡萄牙', value: [{ name: '感染人数' , value:790885},{ name: '治愈人数' , value:683061},{ name: '死亡人数' , value:15649}]},{ name: '匈牙利', value: [{ name: '感染人数' , value:391170},{ name: '治愈人数' , value:299989},{ name: '死亡人数' , value:13931}]},{ name: '罗马尼亚', value: [{ name: '感染人数' , value:768785},{ name: '治愈人数' , value:714709},{ name: '死亡人数' , value:19588}]},{ name: '阿尔巴尼亚', value: [{ name: '感染人数' , value:95726},{ name: '治愈人数' , value:59684},{ name: '死亡人数' , value:1600}]},{ name: '保加利亚', value: [{ name: '感染人数' , value:233342},{ name: '治愈人数' , value:198888},{ name: '死亡人数' , value:9744}]},{ name: '斯洛伐克', value: [{ name: '感染人数' , value:282864},{ name: '治愈人数' , value:255300},{ name: '死亡人数' , value:6168}]},{ name: '芬兰', value: [{ name: '感染人数' , value:51595},{ name: '治愈人数' , value:31000},{ name: '死亡人数' , value:720}]},{ name: '波黑', value: [{ name: '感染人数' , value:126413},{ name: '治愈人数' , value:106831},{ name: '死亡人数' , value:4935}]},{ name: '奥地利', value: [{ name: '感染人数' , value:437874},{ name: '治愈人数' , value:415221},{ name: '死亡人数' , value:8290}]},{ name: '挪威', value: [{ name: '感染人数' , value:67140},{ name: '治愈人数' , value:54004},{ name: '死亡人数' , value:593}]},{ name: '立陶宛', value: [{ name: '感染人数' , value:191821},{ name: '治愈人数' , value:176671},{ name: '死亡人数' , value:3113}]},{ name: '爱沙尼亚', value: [{ name: '感染人数' , value:54300},{ name: '治愈人数' , value:43054},{ name: '死亡人数' , value:510}]},{ name: '拉脱维亚', value: [{ name: '感染人数' , value:77697},{ name: '治愈人数' , value:66208},{ name: '死亡人数' , value:1486}]},{ name: '摩尔多瓦', value: [{ name: '感染人数' , value:172815},{ name: '治愈人数' , value:159339},{ name: '死亡人数' , value:3697}]},{ name: '黑山', value: [{ name: '感染人数' , value:69694},{ name: '治愈人数' , value:59729},{ name: '死亡人数' , value:899}]},{ name: '白俄罗斯', value: [{ name: '感染人数' , value:272273},{ name: '治愈人数' , value:261568},{ name: '死亡人数' , value:1876}]},{ name: '北马其顿', value: [{ name: '感染人数' , value:97803},{ name: '治愈人数' , value:88469},{ name: '死亡人数' , value:3010}]},{ name: '丹麦', value: [{ name: '感染人数' , value:205597},{ name: '治愈人数' , value:197746},{ name: '死亡人数' , value:2316}]},{ name: '卢森堡', value: [{ name: '感染人数' , value:53062},{ name: '治愈人数' , value:49775},{ name: '死亡人数' , value:612}]},{ name: '马耳他', value: [{ name: '感染人数' , value:20246},{ name: '治愈人数' , value:17523},{ name: '死亡人数' , value:298}]},{ name: '克罗地亚', value: [{ name: '感染人数' , value:238502},{ name: '治愈人数' , value:230907},{ name: '死亡人数' , value:5375}]},{ name: '安道尔', value: [{ name: '感染人数' , value:10555},{ name: '治愈人数' , value:9965},{ name: '死亡人数' , value:107}]},{ name: '圣马力诺', value: [{ name: '感染人数' , value:3352},{ name: '治愈人数' , value:2993},{ name: '死亡人数' , value:72}]},{ name: '摩纳哥', value: [{ name: '感染人数' , value:1787},{ name: '治愈人数' , value:1490},{ name: '死亡人数' , value:21}]},{ name: '根西岛', value: [{ name: '感染人数' , value:806},{ name: '治愈人数' , value:669},{ name: '死亡人数' , value:13}]},{ name: '列支敦士登', value: [{ name: '感染人数' , value:2615},{ name: '治愈人数' , value:2482},{ name: '死亡人数' , value:54}]},{ name: '直布罗陀', value: [{ name: '感染人数' , value:4226},{ name: '治愈人数' , value:4082},{ name: '死亡人数' , value:87}]},{ name: '泽西岛', value: [{ name: '感染人数' , value:3207},{ name: '治愈人数' , value:3108},{ name: '死亡人数' , value:68}]},{ name: '冰岛', value: [{ name: '感染人数' , value:6044},{ name: '治愈人数' , value:5986},{ name: '死亡人数' , value:29}]},{ name: '美国', value: [{ name: '感染人数' , value:27824650},{ name: '治愈人数' , value:18596497},{ name: '死亡人数' , value:490447}]},{ name: '墨西哥', value: [{ name: '感染人数' , value:2004575},{ name: '治愈人数' , value:1563992},{ name: '死亡人数' , value:175986}]},{ name: '波多黎各', value: [{ name: '感染人数' , value:98317},{ name: '治愈人数' , value:0},{ name: '死亡人数' , value:1924}]},{ name: '洪都拉斯', value: [{ name: '感染人数' , value:161727},{ name: '治愈人数' , value:63471},{ name: '死亡人数' , value:3913}]},{ name: '多米尼加', value: [{ name: '感染人数' , value:231095},{ name: '治愈人数' , value:179097},{ name: '死亡人数' , value:2975}]},{ name: '加拿大', value: [{ name: '感染人数' , value:834182},{ name: '治愈人数' , value:779761},{ name: '死亡人数' , value:21435}]},{ name: '哥斯达黎加', value: [{ name: '感染人数' , value:200888},{ name: '治愈人数' , value:166979},{ name: '死亡人数' , value:2745}]},{ name: '巴拿马', value: [{ name: '感染人数' , value:333755},{ name: '治愈人数' , value:316048},{ name: '死亡人数' , value:5672}]},{ name: '瓜德罗普岛', value: [{ name: '感染人数' , value:9455},{ name: '治愈人数' , value:0},{ name: '死亡人数' , value:160}]},{ name: '危地马拉', value: [{ name: '感染人数' , value:168103},{ name: '治愈人数' , value:155211},{ name: '死亡人数' , value:6158}]},{ name: '牙买加', value: [{ name: '感染人数' , value:19773},{ name: '治愈人数' , value:12684},{ name: '死亡人数' , value:378}]},{ name: '马提尼克', value: [{ name: '感染人数' , value:6593},{ name: '治愈人数' , value:0},{ name: '死亡人数' , value:45}]},{ name: '古巴', value: [{ name: '感染人数' , value:39941},{ name: '治愈人数' , value:34716},{ name: '死亡人数' , value:274}]},{ name: '萨尔瓦多', value: [{ name: '感染人数' , value:58023},{ name: '治愈人数' , value:52688},{ name: '死亡人数' , value:1767}]},{ name: '海地', value: [{ name: '感染人数' , value:12206},{ name: '治愈人数' , value:9177},{ name: '死亡人数' , value:247}]},{ name: '尼加拉瓜', value: [{ name: '感染人数' , value:6347},{ name: '治愈人数' , value:4225},{ name: '死亡人数' , value:172}]},{ name: '圣文森特和格林纳丁斯', value: [{ name: '感染人数' , value:1457},{ name: '治愈人数' , value:147},{ name: '死亡人数' , value:6}]},{ name: '巴哈马', value: [{ name: '感染人数' , value:8383},{ name: '治愈人数' , value:7020},{ name: '死亡人数' , value:179}]},{ name: '圣卢西亚', value: [{ name: '感染人数' , value:2549},{ name: '治愈人数' , value:1849},{ name: '死亡人数' , value:23}]},{ name: '巴巴多斯', value: [{ name: '感染人数' , value:2331},{ name: '治愈人数' , value:1639},{ name: '死亡人数' , value:25}]},{ name: '圣巴泰勒米岛', value: [{ name: '感染人数' , value:475},{ name: '治愈人数' , value:0},{ name: '死亡人数' , value:0}]},{ name: '特克斯和凯科斯群岛', value: [{ name: '感染人数' , value:1874},{ name: '治愈人数' , value:1551},{ name: '死亡人数' , value:13}]},{ name: '阿鲁巴', value: [{ name: '感染人数' , value:7513},{ name: '治愈人数' , value:7152},{ name: '死亡人数' , value:69}]},{ name: '安提瓜和巴布达', value: [{ name: '感染人数' , value:486},{ name: '治愈人数' , value:206},{ name: '死亡人数' , value:10}]},{ name: '伯利兹', value: [{ name: '感染人数' , value:12188},{ name: '治愈人数' , value:11682},{ name: '死亡人数' , value:313}]},{ name: '库拉索岛', value: [{ name: '感染人数' , value:4652},{ name: '治愈人数' , value:4438},{ name: '死亡人数' , value:22}]},{ name: '特立尼达和多巴哥', value: [{ name: '感染人数' , value:7646},{ name: '治愈人数' , value:7351},{ name: '死亡人数' , value:138}]},{ name: '圣马丁岛', value: [{ name: '感染人数' , value:1758},{ name: '治愈人数' , value:1598},{ name: '死亡人数' , value:27}]},{ name: '美属维尔京群岛', value: [{ name: '感染人数' , value:2545},{ name: '治愈人数' , value:2441},{ name: '死亡人数' , value:25}]},{ name: '荷属圣马丁', value: [{ name: '感染人数' , value:2013},{ name: '治愈人数' , value:1927},{ name: '死亡人数' , value:27}]},{ name: '英属维尔京群岛', value: [{ name: '感染人数' , value:153},{ name: '治愈人数' , value:95},{ name: '死亡人数' , value:1}]},{ name: '开曼群岛', value: [{ name: '感染人数' , value:419},{ name: '治愈人数' , value:388},{ name: '死亡人数' , value:2}]},{ name: '多米尼克', value: [{ name: '感染人数' , value:134},{ name: '治愈人数' , value:110},{ name: '死亡人数' , value:0}]},{ name: '格林那达', value: [{ name: '感染人数' , value:163},{ name: '治愈人数' , value:146},{ name: '死亡人数' , value:1}]},{ name: '圣皮埃尔和密克隆群岛', value: [{ name: '感染人数' , value:24},{ name: '治愈人数' , value:12},{ name: '死亡人数' , value:0}]},{ name: '蒙特塞拉特', value: [{ name: '感染人数' , value:20},{ name: '治愈人数' , value:12},{ name: '死亡人数' , value:1}]},{ name: '安圭拉', value: [{ name: '感染人数' , value:18},{ name: '治愈人数' , value:12},{ name: '死亡人数' , value:0}]},{ name: '百慕大', value: [{ name: '感染人数' , value:695},{ name: '治愈人数' , value:679},{ name: '死亡人数' , value:12}]},{ name: '圣其茨和尼维斯', value: [{ name: '感染人数' , value:41},{ name: '治愈人数' , value:39},{ name: '死亡人数' , value:0}]},{ name: '格陵兰', value: [{ name: '感染人数' , value:30},{ name: '治愈人数' , value:30},{ name: '死亡人数' , value:0}]},{ name: '巴西', value: [{ name: '感染人数' , value:9979276},{ name: '治愈人数' , value:8950450},{ name: '死亡人数' , value:242178}]},{ name: '阿根廷', value: [{ name: '感染人数' , value:2039071},{ name: '治愈人数' , value:1842840},{ name: '死亡人数' , value:50616}]},{ name: '哥伦比亚', value: [{ name: '感染人数' , value:2207701},{ name: '治愈人数' , value:2099628},{ name: '死亡人数' , value:58134}]},{ name: '玻利维亚', value: [{ name: '感染人数' , value:238495},{ name: '治愈人数' , value:181338},{ name: '死亡人数' , value:11303}]},{ name: '秘鲁', value: [{ name: '感染人数' , value:1244729},{ name: '治愈人数' , value:1155956},{ name: '死亡人数' , value:44056}]},{ name: '厄瓜多尔', value: [{ name: '感染人数' , value:268219},{ name: '治愈人数' , value:230377},{ name: '死亡人数' , value:15394}]},{ name: '智利', value: [{ name: '感染人数' , value:784314},{ name: '治愈人数' , value:743306},{ name: '死亡人数' , value:19659}]},{ name: '巴拉圭', value: [{ name: '感染人数' , value:147253},{ name: '治愈人数' , value:123293},{ name: '死亡人数' , value:2991}]},{ name: '法属圭亚那', value: [{ name: '感染人数' , value:16456},{ name: '治愈人数' , value:0},{ name: '死亡人数' , value:80}]},{ name: '委内瑞拉', value: [{ name: '感染人数' , value:133927},{ name: '治愈人数' , value:125924},{ name: '死亡人数' , value:1292}]},{ name: '乌拉圭', value: [{ name: '感染人数' , value:50208},{ name: '治愈人数' , value:44481},{ name: '死亡人数' , value:553}]},{ name: '圭亚那', value: [{ name: '感染人数' , value:8262},{ name: '治愈人数' , value:7486},{ name: '死亡人数' , value:188}]},{ name: '苏里南', value: [{ name: '感染人数' , value:8832},{ name: '治愈人数' , value:8285},{ name: '死亡人数' , value:168}]},{ name: '荷兰加勒比地区', value: [{ name: '感染人数' , value:177},{ name: '治愈人数' , value:0},{ name: '死亡人数' , value:3}]},{ name: '福克兰群岛', value: [{ name: '感染人数' , value:53},{ name: '治愈人数' , value:38},{ name: '死亡人数' , value:0}]},{ name: '南非', value: [{ name: '感染人数' , value:1496439},{ name: '治愈人数' , value:1399829},{ name: '死亡人数' , value:48478}]},{ name: '突尼斯', value: [{ name: '感染人数' , value:224329},{ name: '治愈人数' , value:183530},{ name: '死亡人数' , value:7617}]},{ name: '阿尔及利亚', value: [{ name: '感染人数' , value:111069},{ name: '治愈人数' , value:76168},{ name: '死亡人数' , value:2945}]},{ name: '埃及', value: [{ name: '感染人数' , value:175677},{ name: '治愈人数' , value:136081},{ name: '死亡人数' , value:10150}]},{ name: '乌干达', value: [{ name: '感染人数' , value:40102},{ name: '治愈人数' , value:14569},{ name: '死亡人数' , value:331}]},{ name: '尼日利亚', value: [{ name: '感染人数' , value:149369},{ name: '治愈人数' , value:125722},{ name: '死亡人数' , value:1787}]},{ name: '莫桑比克', value: [{ name: '感染人数' , value:52629},{ name: '治愈人数' , value:32857},{ name: '死亡人数' , value:561}]},{ name: '埃塞俄比亚', value: [{ name: '感染人数' , value:149308},{ name: '治愈人数' , value:130124},{ name: '死亡人数' , value:2237}]},{ name: '肯尼亚', value: [{ name: '感染人数' , value:103332},{ name: '治愈人数' , value:85391},{ name: '死亡人数' , value:1801}]},{ name: '利比亚', value: [{ name: '感染人数' , value:128036},{ name: '治愈人数' , value:110965},{ name: '死亡人数' , value:2051}]},{ name: '马约特', value: [{ name: '感染人数' , value:14037},{ name: '治愈人数' , value:0},{ name: '死亡人数' , value:85}]},{ name: '马拉维', value: [{ name: '感染人数' , value:29634},{ name: '治愈人数' , value:15321},{ name: '死亡人数' , value:976}]},{ name: '斯威士兰', value: [{ name: '感染人数' , value:16606},{ name: '治愈人数' , value:2936},{ name: '死亡人数' , value:634}]},{ name: '留尼旺', value: [{ name: '感染人数' , value:10907},{ name: '治愈人数' , value:0},{ name: '死亡人数' , value:47}]},{ name: '摩洛哥', value: [{ name: '感染人数' , value:479579},{ name: '治愈人数' , value:461466},{ name: '死亡人数' , value:8517}]},{ name: '刚果（金）', value: [{ name: '感染人数' , value:24422},{ name: '治愈人数' , value:14834},{ name: '死亡人数' , value:694}]},{ name: '加纳', value: [{ name: '感染人数' , value:77748},{ name: '治愈人数' , value:69321},{ name: '死亡人数' , value:561}]},{ name: '莱索托', value: [{ name: '感染人数' , value:10350},{ name: '治愈人数' , value:2995},{ name: '死亡人数' , value:254}]},{ name: '赞比亚共和国', value: [{ name: '感染人数' , value:71677},{ name: '治愈人数' , value:64040},{ name: '死亡人数' , value:983}]},{ name: '苏丹', value: [{ name: '感染人数' , value:30078},{ name: '治愈人数' , value:22606},{ name: '死亡人数' , value:1864}]},{ name: '塞内加尔', value: [{ name: '感染人数' , value:31476},{ name: '治愈人数' , value:25635},{ name: '死亡人数' , value:760}]},{ name: '博茨瓦纳', value: [{ name: '感染人数' , value:25802},{ name: '治愈人数' , value:21893},{ name: '死亡人数' , value:226}]},{ name: '津巴布韦', value: [{ name: '感染人数' , value:35315},{ name: '治愈人数' , value:30759},{ name: '死亡人数' , value:1414}]},{ name: '中非共和国', value: [{ name: '感染人数' , value:4996},{ name: '治愈人数' , value:1924},{ name: '死亡人数' , value:63}]},{ name: '刚果（布）', value: [{ name: '感染人数' , value:8419},{ name: '治愈人数' , value:5846},{ name: '死亡人数' , value:123}]},{ name: '喀麦隆', value: [{ name: '感染人数' , value:32098},{ name: '治愈人数' , value:29609},{ name: '死亡人数' , value:479}]},{ name: '布隆迪共和国', value: [{ name: '感染人数' , value:1895},{ name: '治愈人数' , value:4},{ name: '死亡人数' , value:3}]},{ name: '卢旺达', value: [{ name: '感染人数' , value:17594},{ name: '治愈人数' , value:15475},{ name: '死亡人数' , value:240}]},{ name: '南苏丹', value: [{ name: '感染人数' , value:5710},{ name: '治愈人数' , value:3769},{ name: '死亡人数' , value:77}]},{ name: '马里', value: [{ name: '感染人数' , value:8241},{ name: '治愈人数' , value:6154},{ name: '死亡人数' , value:342}]},{ name: '纳米比亚', value: [{ name: '感染人数' , value:36366},{ name: '治愈人数' , value:34261},{ name: '死亡人数' , value:392}]},{ name: '科特迪瓦', value: [{ name: '感染人数' , value:31365},{ name: '治愈人数' , value:29603},{ name: '死亡人数' , value:179}]},{ name: '索马里', value: [{ name: '感染人数' , value:5373},{ name: '治愈人数' , value:3750},{ name: '死亡人数' , value:163}]},{ name: '贝宁', value: [{ name: '感染人数' , value:5039},{ name: '治愈人数' , value:3772},{ name: '死亡人数' , value:62}]},{ name: '塞拉利昂', value: [{ name: '感染人数' , value:3825},{ name: '治愈人数' , value:2592},{ name: '死亡人数' , value:79}]},{ name: '加蓬', value: [{ name: '感染人数' , value:12865},{ name: '治愈人数' , value:11750},{ name: '死亡人数' , value:75}]},{ name: '安哥拉', value: [{ name: '感染人数' , value:20389},{ name: '治愈人数' , value:18918},{ name: '死亡人数' , value:494}]},{ name: '几内亚', value: [{ name: '感染人数' , value:15020},{ name: '治愈人数' , value:13999},{ name: '死亡人数' , value:85}]},{ name: '厄立特里亚', value: [{ name: '感染人数' , value:2566},{ name: '治愈人数' , value:1719},{ name: '死亡人数' , value:7}]},{ name: '多哥', value: [{ name: '感染人数' , value:5953},{ name: '治愈人数' , value:5094},{ name: '死亡人数' , value:81}]},{ name: '布基纳法索', value: [{ name: '感染人数' , value:11630},{ name: '治愈人数' , value:10748},{ name: '死亡人数' , value:138}]},{ name: '科摩罗', value: [{ name: '感染人数' , value:3558},{ name: '治愈人数' , value:2911},{ name: '死亡人数' , value:133}]},{ name: '几内亚比绍', value: [{ name: '感染人数' , value:2950},{ name: '治愈人数' , value:2426},{ name: '死亡人数' , value:46}]},{ name: '冈比亚', value: [{ name: '感染人数' , value:4469},{ name: '治愈人数' , value:3891},{ name: '死亡人数' , value:138}]},{ name: '塞舌尔', value: [{ name: '感染人数' , value:1987},{ name: '治愈人数' , value:1534},{ name: '死亡人数' , value:21}]},{ name: '马达加斯加', value: [{ name: '感染人数' , value:19598},{ name: '治愈人数' , value:18915},{ name: '死亡人数' , value:292}]},{ name: '尼日尔', value: [{ name: '感染人数' , value:4706},{ name: '治愈人数' , value:4152},{ name: '死亡人数' , value:169}]},{ name: '乍得', value: [{ name: '感染人数' , value:3689},{ name: '治愈人数' , value:3182},{ name: '死亡人数' , value:131}]},{ name: '圣多美和普林西比', value: [{ name: '感染人数' , value:1520},{ name: '治愈人数' , value:1125},{ name: '死亡人数' , value:22}]},{ name: '佛得角', value: [{ name: '感染人数' , value:14785},{ name: '治愈人数' , value:14282},{ name: '死亡人数' , value:140}]},{ name: '毛里塔尼亚', value: [{ name: '感染人数' , value:17016},{ name: '治愈人数' , value:16240},{ name: '死亡人数' , value:431}]},{ name: '坦桑尼亚', value: [{ name: '感染人数' , value:509},{ name: '治愈人数' , value:167},{ name: '死亡人数' , value:21}]},{ name: '赤道几内亚', value: [{ name: '感染人数' , value:5694},{ name: '治愈人数' , value:5426},{ name: '死亡人数' , value:87}]},{ name: '利比里亚', value: [{ name: '感染人数' , value:1985},{ name: '治愈人数' , value:1775},{ name: '死亡人数' , value:85}]},{ name: '吉布提', value: [{ name: '感染人数' , value:5981},{ name: '治愈人数' , value:5854},{ name: '死亡人数' , value:65}]},{ name: '毛里求斯', value: [{ name: '感染人数' , value:603},{ name: '治愈人数' , value:554},{ name: '死亡人数' , value:10}]},{ name: '法属波利尼西亚', value: [{ name: '感染人数' , value:18299},{ name: '治愈人数' , value:5167},{ name: '死亡人数' , value:136}]},{ name: '关岛', value: [{ name: '感染人数' , value:7493},{ name: '治愈人数' , value:6707},{ name: '死亡人数' , value:130}]},{ name: '澳大利亚', value: [{ name: '感染人数' , value:28911},{ name: '治愈人数' , value:27359},{ name: '死亡人数' , value:909}]},{ name: '北马里亚纳群岛联邦', value: [{ name: '感染人数' , value:135},{ name: '治愈人数' , value:32},{ name: '死亡人数' , value:2}]},{ name: '巴布亚新几内亚', value: [{ name: '感染人数' , value:955},{ name: '治愈人数' , value:846},{ name: '死亡人数' , value:10}]},{ name: '新西兰', value: [{ name: '感染人数' , value:2307},{ name: '治愈人数' , value:2210},{ name: '死亡人数' , value:26}]},{ name: '新喀里多尼亚', value: [{ name: '感染人数' , value:52},{ name: '治愈人数' , value:30},{ name: '死亡人数' , value:0}]},{ name: '斐济', value: [{ name: '感染人数' , value:56},{ name: '治愈人数' , value:54},{ name: '死亡人数' , value:2}]},{ name: '钻石公主号邮轮', value: [{ name: '感染人数' , value:741},{ name: '治愈人数' , value:574},{ name: '死亡人数' , value:13}]}
+		];
+		var message = '感染人数：109869881, 治愈人数：79970563, 死亡人数: 2429528'+'\n'+'更新时间: 2021-02-18 16:38:06'+'\n'+'数据来自官方通报，全国与各省通报数据可能存在差异';
+		var dataColor = [
+		{ name: '伊朗', value:1542076},
+		{ name: '印度尼西亚', value:1243646},
+		{ name: '印度', value:10937320},
+		{ name: '哈萨克斯坦', value:251959},{ name: '黎巴嫩', value:343601},{ name: '土耳其', value:2609359},{ name: '以色列', value:738629},{ name: '孟加拉国', value:541877},{ name: '马来西亚', value:272163},{ name: '巴勒斯坦', value:65802},{ name: '塞浦路斯', value:32707},{ name: '菲律宾', value:553424},{ name: '伊拉克', value:653557},{ name: '巴基斯坦', value:565989},{ name: '日本', value:419015},{ name: '约旦', value:352219},{ name: '阿联酋', value:358583},{ name: '科威特', value:180505},{ name: '卡塔尔', value:158591},{ name: '韩国', value:85567},{ name: '缅甸', value:141690},{ name: '巴林', value:114361},{ name: '阿曼', value:137929},{ name: '斯里兰卡', value:77184},{ name: '叙利亚', value:14951},{ name: '亚美尼亚', value:169597},{ name: '阿富汗', value:55540},{ name: '格鲁吉亚', value:266948},{ name: '沙特阿拉伯', value:373702},{ name: '马尔代夫', value:18082},{ name: '阿塞拜疆', value:232337},{ name: '吉尔吉斯斯坦', value:85619},{ name: '尼泊尔', value:273070},{ name: '也门共和国', value:2152},{ name: '泰国', value:24961},{ name: '中国', value:101604},{ name: '乌兹别克斯坦', value:79497},{ name: '越南', value:2329},{ name: '蒙古', value:2448},{ name: '塔吉克斯坦', value:13714},{ name: '新加坡', value:59810},{ name: '东帝汶', value:102},{ name: '柬埔寨', value:479},{ name: '不丹', value:866},{ name: '文莱', value:184},{ name: '老挝', value:45},{ name: '英国', value:4071185},{ name: '法国', value:3514147},{ name: '西班牙', value:3107172},{ name: '荷兰', value:1038156},{ name: '比利时', value:741205},{ name: '瑞典', value:622102},{ name: '塞尔维亚', value:490582},{ name: '意大利', value:2751657},{ name: '俄罗斯', value:4112151},{ name: '瑞士', value:545535},{ name: '波兰', value:1605372},{ name: '爱尔兰', value:211751},{ name: '斯洛文尼亚', value:180507},{ name: '希腊', value:173905},{ name: '德国', value:2362352},{ name: '乌克兰', value:1280904},{ name: '捷克', value:1112654},{ name: '葡萄牙', value:790885},{ name: '匈牙利', value:391170},{ name: '罗马尼亚', value:768785},{ name: '阿尔巴尼亚', value:95726},{ name: '保加利亚', value:233342},{ name: '斯洛伐克', value:282864},{ name: '芬兰', value:51595},{ name: '波黑', value:126413},{ name: '奥地利', value:437874},{ name: '挪威', value:67140},{ name: '立陶宛', value:191821},{ name: '爱沙尼亚', value:54300},{ name: '拉脱维亚', value:77697},{ name: '摩尔多瓦', value:172815},{ name: '黑山', value:69694},{ name: '白俄罗斯', value:272273},{ name: '北马其顿', value:97803},{ name: '丹麦', value:205597},{ name: '卢森堡', value:53062},{ name: '马耳他', value:20246},{ name: '克罗地亚', value:238502},{ name: '安道尔', value:10555},{ name: '圣马力诺', value:3352},{ name: '摩纳哥', value:1787},{ name: '根西岛', value:806},{ name: '列支敦士登', value:2615},{ name: '直布罗陀', value:4226},{ name: '泽西岛', value:3207},{ name: '冰岛', value:6044},{ name: '美国', value:27824650},{ name: '墨西哥', value:2004575},{ name: '波多黎各', value:98317},{ name: '洪都拉斯', value:161727},{ name: '多米尼加', value:231095},{ name: '加拿大', value:834182},{ name: '哥斯达黎加', value:200888},{ name: '巴拿马', value:333755},{ name: '瓜德罗普岛', value:9455},{ name: '危地马拉', value:168103},{ name: '牙买加', value:19773},{ name: '马提尼克', value:6593},{ name: '古巴', value:39941},{ name: '萨尔瓦多', value:58023},{ name: '海地', value:12206},{ name: '尼加拉瓜', value:6347},{ name: '圣文森特和格林纳丁斯', value:1457},{ name: '巴哈马', value:8383},{ name: '圣卢西亚', value:2549},{ name: '巴巴多斯', value:2331},{ name: '圣巴泰勒米岛', value:475},{ name: '特克斯和凯科斯群岛', value:1874},{ name: '阿鲁巴', value:7513},{ name: '安提瓜和巴布达', value:486},{ name: '伯利兹', value:12188},{ name: '库拉索岛', value:4652},{ name: '特立尼达和多巴哥', value:7646},{ name: '圣马丁岛', value:1758},{ name: '美属维尔京群岛', value:2545},{ name: '荷属圣马丁', value:2013},{ name: '英属维尔京群岛', value:153},{ name: '开曼群岛', value:419},{ name: '多米尼克', value:134},{ name: '格林那达', value:163},{ name: '圣皮埃尔和密克隆群岛', value:24},{ name: '蒙特塞拉特', value:20},{ name: '安圭拉', value:18},{ name: '百慕大', value:695},{ name: '圣其茨和尼维斯', value:41},{ name: '格陵兰', value:30},{ name: '巴西', value:9979276},{ name: '阿根廷', value:2039071},{ name: '哥伦比亚', value:2207701},{ name: '玻利维亚', value:238495},{ name: '秘鲁', value:1244729},{ name: '厄瓜多尔', value:268219},{ name: '智利', value:784314},{ name: '巴拉圭', value:147253},{ name: '法属圭亚那', value:16456},{ name: '委内瑞拉', value:133927},{ name: '乌拉圭', value:50208},{ name: '圭亚那', value:8262},{ name: '苏里南', value:8832},{ name: '荷兰加勒比地区', value:177},{ name: '福克兰群岛', value:53},{ name: '南非', value:1496439},{ name: '突尼斯', value:224329},{ name: '阿尔及利亚', value:111069},{ name: '埃及', value:175677},{ name: '乌干达', value:40102},{ name: '尼日利亚', value:149369},{ name: '莫桑比克', value:52629},{ name: '埃塞俄比亚', value:149308},{ name: '肯尼亚', value:103332},{ name: '利比亚', value:128036},{ name: '马约特', value:14037},{ name: '马拉维', value:29634},{ name: '斯威士兰', value:16606},{ name: '留尼旺', value:10907},{ name: '摩洛哥', value:479579},{ name: '刚果（金）', value:24422},{ name: '加纳', value:77748},{ name: '莱索托', value:10350},{ name: '赞比亚共和国', value:71677},{ name: '苏丹', value:30078},{ name: '塞内加尔', value:31476},{ name: '博茨瓦纳', value:25802},{ name: '津巴布韦', value:35315},{ name: '中非共和国', value:4996},{ name: '刚果（布）', value:8419},{ name: '喀麦隆', value:32098},{ name: '布隆迪共和国', value:1895},{ name: '卢旺达', value:17594},{ name: '南苏丹', value:5710},{ name: '马里', value:8241},{ name: '纳米比亚', value:36366},{ name: '科特迪瓦', value:31365},{ name: '索马里', value:5373},{ name: '贝宁', value:5039},{ name: '塞拉利昂', value:3825},{ name: '加蓬', value:12865},{ name: '安哥拉', value:20389},{ name: '几内亚', value:15020},{ name: '厄立特里亚', value:2566},{ name: '多哥', value:5953},{ name: '布基纳法索', value:11630},{ name: '科摩罗', value:3558},{ name: '几内亚比绍', value:2950},{ name: '冈比亚', value:4469},{ name: '塞舌尔', value:1987},{ name: '马达加斯加', value:19598},{ name: '尼日尔', value:4706},{ name: '乍得', value:3689},{ name: '圣多美和普林西比', value:1520},{ name: '佛得角', value:14785},{ name: '毛里塔尼亚', value:17016},{ name: '坦桑尼亚', value:509},{ name: '赤道几内亚', value:5694},{ name: '利比里亚', value:1985},{ name: '吉布提', value:5981},{ name: '毛里求斯', value:603},{ name: '法属波利尼西亚', value:18299},{ name: '关岛', value:7493},{ name: '澳大利亚', value:28911},{ name: '北马里亚纳群岛联邦', value:135},{ name: '巴布亚新几内亚', value:955},{ name: '新西兰', value:2307},{ name: '新喀里多尼亚', value:52},{ name: '斐济', value:56},{ name: '钻石公主号邮轮', value:741}
+		];
+		var nameMap = {"Afghanistan": "阿富汗",
+              "Angola": "安哥拉",
+              "Albania": "阿尔巴尼亚",
+              "Algeria": "阿尔及利亚",
+              "Argentina": "阿根廷",
+              "Armenia": "亚美尼亚",
+              "Australia": "澳大利亚",
+              "Austria": "奥地利",
+              "Azerbaijan": "阿塞拜疆",
+              "Bahamas": "巴哈马",
+              "Bangladesh": "孟加拉国",
+              "Belgium": "比利时",
+              "Benin": "贝宁",
+			  "Aland": "奥兰群岛",
+			  "Kiribati": "基里巴斯",
+			  "Fr. Polynesia": "法属波利尼西亚",
+			  "American Samoa": "美属萨摩亚",
+			  "Niue": "纽埃",
+			  "Tonga": "汤加",
+			  "Br. Indian Ocean Ter.": "英属印度洋领地",
+			  "Palau": "帕劳共和国",
+			  "N. Mariana Is.": "马里亚纳群岛",
+			  "Guam": "关岛",
+			  "Andorra": "安道尔",
+			  "Micronesia": "密克罗尼西亚",
+			  "São Tomé and Principe":"圣多美和普林西比",
+              "Burkina Faso": "布基纳法索",
+              "Burundi": "布隆迪",
+              "Bulgaria": "保加利亚",
+              "Bosnia and Herz.": "波斯尼亚和黑塞哥维那",
+              "Belarus": "白俄罗斯",
+              "Belize": "伯利兹",
+              "Bermuda": "百慕大群岛",
+              "Bolivia": "玻利维亚",
+              "Brazil": "巴西",
+              "Brunei": "文莱",
+              "Bhutan": "不丹",
+              "Botswana": "博茨瓦纳",
+              "Cambodia": "柬埔寨",
+              "Cameroon": "喀麦隆",
+              "Canada": "加拿大",
+              "Central African Rep.": "中非共和国",
+              "Chad": "乍得",
+              "Chile": "智利",
+              "China": "中国",
+              "Colombia": "哥伦比亚",
+              "Congo": "刚果",
+			  "Isle of Man":"马恩岛",
+              "Costa Rica": "哥斯达黎加",
+			  "Singapore":"新加坡",
+              "Côte d'Ivoire": "科特迪瓦",
+              "Croatia": "克罗地亚",
+              "Cuba": "古巴",
+              "Cyprus": "塞浦路斯",
+              "Czech Rep.": "捷克共和国",
+              "Dem. Rep. Korea": "韩国",
+              "Dem. Rep. Congo": "民主刚果",
+              "Denmark": "丹麦",
+			  "Bahrain": "巴林",
+			  "Comoros": "科摩罗",
+			  "Mauritius": "毛里求斯",
+			  "Cape Verde": "普拉亚",
+			  "Malta": "马耳他",
+			  "N. Cyprus": "塞浦路斯",
+			  "Liechtenstein": "列支敦士登",
+			  "Jersey":"泽西岛",
+			  "Faeroe Is.": "费罗岛",
+			  "Antigua and Barb.": "安提瓜和巴布达",
+			  "Montserrat": "蒙特塞拉特岛",
+			  "Dominica": "多米尼克",
+			  "Saint Lucia": "圣卢西亚",
+			  "Barbados": "巴巴多斯",
+			  "Grenada": "格林纳达",
+			  "Curaçao": "库拉索",
+			  "Cayman Is.": "开曼群岛",
+			  "Siachen Glacier": "锡阿琴冰川",
+              "Djibouti": "吉布提",
+              "Dominican Rep.": "多米尼加共和国",
+              "Ecuador": "厄瓜多尔",
+              "Egypt": "埃及",
+              "El Salvador": "萨尔瓦多",
+              "Eq. Guinea": "赤道几内亚",
+              "Eritrea": "厄立特里亚",
+              "Estonia": "爱沙尼亚",
+              "Ethiopia": "埃塞俄比亚",
+              "Falkland Is.": "福克兰群岛",
+              "Fiji": "斐济",
+              "Finland": "芬兰",
+              "France": "法国",
+              "French Guiana": "法属圭亚那",
+              "Fr. S. Antarctic Lands": "法属南部领地",
+              "Gabon": "加蓬",
+              "Gambia": "冈比亚",
+              "Germany": "德国",
+              "Georgia": "佐治亚州",
+              "Ghana": "加纳",
+              "Greece": "希腊",
+              "Greenland": "格陵兰",
+              "Guatemala": "危地马拉",
+              "Guinea": "几内亚",
+              "Guinea-Bissau": "几内亚比绍",
+              "Guyana": "圭亚那",
+              "Haiti": "海地",
+              "Heard I. and McDonald Is.": "赫德岛和麦克唐纳群岛",
+              "Honduras": "洪都拉斯",
+              "Hungary": "匈牙利",
+              "Iceland": "冰岛",
+              "India": "印度",
+              "Indonesia": "印度尼西亚",
+              "Iran": "伊朗",
+              "Iraq": "伊拉克",
+              "Ireland": "爱尔兰",
+              "Israel": "以色列",
+              "Italy": "意大利",
+              "Ivory Coast": "象牙海岸",
+              "Jamaica": "牙买加",
+              "Japan": "日本",
+              "Jordan": "乔丹",
+              "Kashmir": "克什米尔",
+              "Kazakhstan": "哈萨克斯坦",
+              "Kenya": "肯尼亚",
+              "Kosovo": "科索沃",
+              "Kuwait": "科威特",
+              "Kyrgyzstan": "吉尔吉斯斯坦",
+              "Laos": "老挝",
+              "Lao PDR": "老挝人民民主共和国",
+              "Latvia": "拉脱维亚",
+              "Lebanon": "黎巴嫩",
+              "Lesotho": "莱索托",
+              "Liberia": "利比里亚",
+              "Libya": "利比亚",
+              "Lithuania": "立陶宛",
+              "Luxembourg": "卢森堡",
+              "Madagascar": "马达加斯加",
+              "Macedonia": "马其顿",
+              "Malawi": "马拉维",
+              "Malaysia": "马来西亚",
+              "Mali": "马里",
+              "Mauritania": "毛里塔尼亚",
+              "Mexico": "墨西哥",
+              "Moldova": "摩尔多瓦",
+              "Mongolia": "蒙古",
+              "Montenegro": "黑山",
+              "Morocco": "摩洛哥",
+              "Mozambique": "莫桑比克",
+              "Myanmar": "缅甸",
+              "Namibia": "纳米比亚",
+              "Netherlands": "荷兰",
+              "New Caledonia": "新喀里多尼亚",
+              "New Zealand": "新西兰",
+              "Nepal": "尼泊尔",
+              "Nicaragua": "尼加拉瓜",
+              "Niger": "尼日尔",
+              "Nigeria": "尼日利亚",
+              "Korea": "朝鲜",
+              "Northern Cyprus": "北塞浦路斯",
+              "Norway": "挪威",
+              "Oman": "阿曼",
+              "Pakistan": "巴基斯坦",
+              "Panama": "巴拿马",
+              "Papua New Guinea": "巴布亚新几内亚",
+              "Paraguay": "巴拉圭",
+              "Peru": "秘鲁",
+              "Republic of the Congo": "刚果共和国",
+              "Philippines": "菲律宾",
+              "Poland": "波兰",
+              "Portugal": "葡萄牙",
+              "Puerto Rico": "波多黎各",
+              "Qatar": "卡塔尔",
+              "Republic of Seychelles": "塞舌尔共和国",
+              "Romania": "罗马尼亚",
+              "Russia": "俄罗斯",
+              "Rwanda": "卢旺达",
+              "Saint Helena":"圣海伦娜",
+              "Samoa": "萨摩亚",
+              "Saudi Arabia": "沙特阿拉伯",
+              "Seychelles":"塞舌尔",
+              "Senegal": "塞内加尔",
+              "Serbia": "塞尔维亚",
+              "Sierra Leone": "塞拉利昂",
+              "Slovakia": "斯洛伐克",
+              "Slovenia": "斯洛文尼亚",
+              "Solomon Is.": "所罗门群岛",
+              "Somaliland": "索马里兰",
+              "Somalia": "索马里",
+              "South Africa": "南非",
+              "S. Geo. and S. Sandw. Is.": "南乔治亚和南桑德威奇群岛",
+              "S. Sudan": "南苏丹",
+              "Spain": "西班牙",
+              "Sri Lanka": "斯里兰卡",
+              "Sudan": "苏丹",
+              "Suriname": "苏里南",
+              "St. Vin. and Gren.":"圣文森特和格林纳丁斯",
+              "St. Pierre and Miquelon" :"圣皮埃尔和密克隆群岛",
+              "Swaziland": "斯威士兰",
+              "Sweden": "瑞典",
+              "Switzerland": "瑞士",
+              "Syria": "叙利亚",
+              "Tajikistan": "塔吉克斯坦",
+              "Tanzania": "坦桑尼亚",
+              "Thailand": "泰国",
+              "The Kingdom of Tonga": "汤加王国",
+              "Timor-Leste": "东帝汶",
+              "Tonga ":"汤加",
+              "Togo": "多哥",
+              "Trinidad and Tobago": "特立尼达和多巴哥",
+              "Turks and Caicos Is.":"特克斯和凯科斯群岛",
+              "Tunisia": "突尼斯",
+              "Turkey": "土耳其",
+              "Turkmenistan": "土库曼斯坦",
+              "Uganda": "乌干达",
+              "Ukraine": "乌克兰",
+              "United Arab Emirates": "阿拉伯联合酋长国",
+              "United Kingdom": "大不列颠联合王国",
+              "United Republic of Tanzania": "坦桑尼亚联合共和国",
+              "United States": "美国",
+              "United States of America": "美利坚合众国",
+              "Uruguay": "乌拉圭",
+              "U.S. Virgin Is.":"圣母玛利亚",
+              "Uzbekistan": "乌兹别克斯坦",
+              "Vanuatu": "瓦努阿图",
+              "Venezuela": "委内瑞拉",
+              "Vietnam": "越南",
+              "West Bank": "西岸",
+              "W. Sahara": "西撒哈拉",
+              "Yemen": "也门",
+              "Zambia": "赞比亚",
+              "Zimbabwe": "津巴布韦",              
+					};
+        var option = {
+            title: {
+                text: name_title,
+				subtext: message,
+                x: 'center',
+                textStyle: {
+                    fontSize: 24,
+					fontWeight: "bolder"
+                },                
+				subtextStyle: {
+					fontSize: 14
+				}
+            },
+			tooltip: {
+				show: true,
+                trigger: 'item',
+                formatter: function(params) {       
+					var res = '';
+					for (var i = 0; i < data.length; i++) {
+						if(params.name == data[i].name){
+							res += data[i].name+':<br>'
+							for(var j = 0;j<data[i].value.length;j++){
+								res += data[i].value[j].name+':'+data[i].value[j].value+"<br>"
+						}
+					}
+
+                    }
+					return res;  
+                }
+            },
+			toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            visualMap: { //地图左侧配置
+				show : true,
+				x: 'left',
+				y: 'bottom',
+				
+				color: ['#8B0000', '#DC143C', '#FF0000','#FF4500', '#FF7F50'],
+				splitList: [ 
+					{start: 200000},
+					{start: 120000, end: 200000},{start: 50000, end: 120000},
+					{start: 20000, end: 50000},{start: 0, end: 20000},
+				],
+				textStyle:{
+					color:"#999",
+					fontWeight:"bold",
+					fontSize:14
+				}
+			},
+			geo: {
+			    show:true,
+				roam: true,
+				map: mapName,
+				nameMap: nameMap,
+                label: {
+                    normal: {
+                        show: false,
+                        fontSize:12,
+                    },
+                    emphasis: {
+                        show: true,
+						fontSize:10,
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        areaColor: '#F6F6F6',
+                        borderColor: '#666666',
+                    },
+                    emphasis: {
+                        areaColor: '#0099CC',
+                    }
+                }
+            },
+			series: [
+                {
+                    type: 'map',
+                    map: mapName, 
+					geoIndex: 0,
+					roam: true,
+                    animation: false,		//动态翻页
+					data: dataColor,
+					nameMap: nameMap
+				},
+					],
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+		
+    </script>
+</body>
+</html>
